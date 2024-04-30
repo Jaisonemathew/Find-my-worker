@@ -35,7 +35,13 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
       <script src="https://kit.fontawesome.com/2e4ed298ac.js" crossorigin="anonymous"></script>
-</head>
+<style>
+   .green-large-text {
+    color: green;
+    font-size: 2em; /* Adjust size as needed */
+}
+</style>
+   </head>
 <!-- body -->
 
 <body class="main-layout">
@@ -127,17 +133,7 @@
             <div class="carousel-inner">
                <div class="carousel-item active">
                   <div class="container">
-                     <div class="carousel-caption  banner_po">
-                        <div class="row">
-                           <div class="col-md-9">
-                              <div class="build_box">
-                                 <h1>Find My Worker</h1>
-                                 <p>Find your worker from here,Contact as for more details <br> You can find daily wage
-                                    workers and book them</p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
+                     
                   </div>
                </div>
             </div>
@@ -150,12 +146,12 @@
 
    <div class="container-fluid">
       <br><br>
-      <!-- <h1>Bookings are displayed here only after Admin Approval</h1> -->
+
       <!-- success -->
       {% if messages %}
     <ul class="messages">
         {% for message in messages %}
-            <h1{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h1>
+            <h1{% if message.tags %} class="{{ message.tags }} green-large-text"{% endif %}>{{ message }}</h1>
         {% endfor %}
     </ul>
 {% endif %}
@@ -183,15 +179,17 @@
                text-align: center;
                text-decoration: none;
                display: inline-block;
-               font-size: 16px;
+               font-size: 20px;
                margin: 4px 2px;
                cursor: pointer;
                width:50%;">
-               <a href="{% url 'cancel' i.id %}">cancel</a>
-
+               <a href="{% url 'cancel' i.id %}">Cancel</a>
+               <br>
+            
                </div>
             </div>
          </div>
+         
          {% endif %}
          {% endfor %}
 
@@ -252,7 +250,7 @@
             <div class="container">
                <div class="row">
                   <div class="col-md-8 offset-md-2">
-                     <p>© 2023 All Rights Reserved.Design by <a style="color:red;" href="{% url 'index' %}">Muhammed Abrar</a></p>
+                     <p>© 2024 All Rights Reserved.</p>
                   </div>
                </div>
             </div>
