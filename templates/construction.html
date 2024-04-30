@@ -201,7 +201,7 @@
                      <h3>ENTER YOUR E-MAIL TO GET NOTIFICATION!</h3>
                      <form class="bottom_form" method="post" action="{% url 'notification' %}">
                         {% csrf_token %}
-                        <input class="enter" placeholder="Enter your email" type="text" name="email">
+                        <input class="enter" placeholder="Enter your email" type="email" name="email">
                         <button class="sub_btn">GET NOTIFICATION</button>
                      </form>
                   </div>

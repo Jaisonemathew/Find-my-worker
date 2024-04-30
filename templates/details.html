@@ -30,6 +30,11 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
       <script src="https://kit.fontawesome.com/2e4ed298ac.js" crossorigin="anonymous"></script>
+  <style>
+   .input:focus + .label {
+    display: none;
+}
+  </style>
    </head>
    <!-- body -->
    <body class="main-layout">
@@ -148,42 +153,43 @@
               <div class="field-wrap">
                 <div class="field">
                   <label class="label" for="firstname">First Name</label>
-                  <input class="input" id="firstname" name="firstname" type="text">
+                  <input class="input" id="firstname" name="firstname" type="text" required>
                 </div>
               </div>
 
               <div class="field-wrap">
                 <div class="field">
                   <label class="label" for="lastname">Last Name</label>
-                  <input class="input" id="lastname" name="lastname" type="text"> 
+                  <input class="input" id="lastname" name="lastname" type="text" required> 
                 </div>
               </div>
 
               <div class="field-wrap">
                 <div class="field">
-                  <label class="label" for="phno">phone no.</label>
-                  <input class="input" id="phno" name="phno" type="text" pattern="\d*" maxlength="10">
+                  <label class="label" for="phno">Phone no.</label>
+                  <input class="input" id="phno" name="phno" type="text" pattern="\d*" maxlength="10" required>
                 </div>
               </div>
 
               <div class="field-wrap">
                 <div class="field">
                   <label class="label" for="address">Address <span class="helper-text">(Including pin)</span></label>
-                  <textarea class="input" id="address" name="address"></textarea>
+                  <textarea class="input" id="address" name="address" required></textarea>
                 </div>
               </div>
 
               <div class="field-wrap">
                <div class="field">
                  <label class="label" for="district">District</label>
-                 <input class="input" id="district" name="district" type="text"> 
+                 <input class="input" id="district" name="district" type="text" required> 
                </div>
              </div>
 
              <div class="field-wrap">
                <div class="field">
-                 <label class="label" for="amount">Number of Worker</label>
-                 <input class="input" id="amount" name="amount" type="number"> 
+                  <label class="label" for="amount">No of Worker</label>
+         
+                 <input class="input" id="amount" name="amount" type="number" required min="1" max="1000"> 
                </div>
              </div>
             <br>
@@ -238,7 +244,7 @@
                      <h3>ENTER YOUR E-MAIL TO GET NOTIFICATION!</h3>
                      <form class="bottom_form" method="post" action="{% url 'notification' %}">
                         {% csrf_token %}
-                        <input class="enter" placeholder="Enter your email" type="text" name="email">
+                        <input class="enter" placeholder="Enter your email" type="email" name="email" required>
                         <button class="sub_btn">GET NOTIFICATION</button>
                      </form>
                   </div>
