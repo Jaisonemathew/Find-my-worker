@@ -151,13 +151,13 @@
       {% if messages %}
     <ul class="messages">
         {% for message in messages %}
-            <h1{% if message.tags %} class="{{ message.tags }} green-large-text"{% endif %}>{{ message }}</h1>
+           <center><h1{% if message.tags %} class="{{ message.tags }} green-large-text"{% endif %}>{{ message }}</h1></center> 
         {% endfor %}
     </ul>
 {% endif %}
       <div class="row mt-3">
          {% for i in userbooking %}
-         {% if i.is_approved %}
+    
          <div class="col ">
             <div class="container2 mx-4">
                <p>Worker:</p>
@@ -170,9 +170,25 @@
                <h3>{{i.address}}</h3>
                <p>District:</p>
                <h3>{{i.district}}</h3>
-               <p>Amount of worker:</p>
+               <p>Number of worker:</p>
                <h3>{{i.amount}}</h3>
-               <div style="background-color: #fe9901;
+               {% if not i.is_approved %}
+               <div style="background-color: #fe9901;;
+                              border: none;
+                              color: white;
+                              padding: 15px 32px;
+                              text-align: center;
+                              text-decoration: none;
+                              display: inline-block;
+                              font-size: 20px;
+                              margin: 4px 2px;
+                              cursor: pointer;
+                              width:50%;">
+                              <a href="{% url 'cancel' i.id %}">Cancel</a>
+                              <br>
+               </div>
+               {% else %}
+               <div style="background-color: green;
                border: none;
                color: white;
                padding: 15px 32px;
@@ -183,14 +199,14 @@
                margin: 4px 2px;
                cursor: pointer;
                width:50%;">
-               <a href="{% url 'cancel' i.id %}">Cancel</a>
-               <br>
-            
+             <b>Approved</b>
                </div>
+               
+               {% endif %}
             </div>
          </div>
          
-         {% endif %}
+
          {% endfor %}
 
       </div>
