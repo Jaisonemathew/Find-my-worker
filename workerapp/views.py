@@ -78,12 +78,13 @@ def details(request,worker):
         firstname=request.POST['firstname']
         lastname=request.POST['lastname']
         phno=request.POST['phno']
+        email=request.POST['email']
         address=request.POST['address']
         district=request.POST['district']
         amount=request.POST['amount']
         worker=worker
-        messages.success(request, 'Booking successful and sent to admin for approval.')
-        book=booking.objects.create(user=user.username,firstname=firstname,lastname=lastname,phno=phno,address=address,district=district,amount=amount,worker=worker)
+        messages.success(request, 'Booking successful waiting for confirmation.')
+        book=booking.objects.create(user=user.username,firstname=firstname,lastname=lastname,phno=phno,email=email,address=address,district=district,amount=amount,worker=worker)
         book.save()
       
         return redirect('mybookings')
