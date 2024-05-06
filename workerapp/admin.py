@@ -6,8 +6,8 @@ from .models import Worker
 from .models import booking,feedback,notification,review
 
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ('user', 'is_approved')
-    list_filter = ('is_approved',)
+    list_display = ('user', 'is_approved','is_cancelled')
+    list_filter = ('is_approved','is_cancelled')
     search_fields = ('user', 'firstname', 'lastname')
     actions = ['approve_bookings']
 

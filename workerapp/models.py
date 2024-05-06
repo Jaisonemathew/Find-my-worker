@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.core.exceptions import ValidationError
 #Email
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -23,6 +23,12 @@ class booking(models.Model):
     worker=models.CharField(max_length=25)
     email = models.CharField(max_length=254,default='')
     is_approved = models.BooleanField(default=False)
+    is_cancelled = models.BooleanField(default=False)
+    def save(self, *args, **kwargs):
+        if self.is_approved and self.is_cancelled:
+            raise ValidationError("A booking cannot be both approved and cancelled.")
+        super().save(*args, **kwargs)
+    
     
 #Email System
 @receiver(post_save, sender=booking)

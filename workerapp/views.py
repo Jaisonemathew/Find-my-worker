@@ -101,16 +101,17 @@ def mybookings(request):
     return render(request, 'mybookings.html',context)
 
   
-def cancel(request,id):
-    user= request.user.username
-    item=booking.objects.get(id=id)
-    item.delete()
+def cancel(request, id):
+    user = request.user.username
+    item = booking.objects.get(id=id)
+    item.is_cancelled = True
+    item.save()
 
-    book=booking.objects.filter(user=user).all()
+    book = booking.objects.filter(user=user).all()
     context = {
-        'userbooking':book
-        }
-    return render(request, 'mybookings.html',context)
+        'userbooking': book
+    }
+    return render(request, 'mybookings.html', context)
 
     
 def fdback(request):
