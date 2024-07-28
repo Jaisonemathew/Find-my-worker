@@ -34,25 +34,33 @@ class booking(models.Model):
 @receiver(post_save, sender=booking)
 def send_notification(sender, instance, created, **kwargs):
     if not created and instance.is_approved:
-        message = 'Dear {},\n\nYour booking has been approved.\n\nDetails:\nPhone Number: {}\nEmail: {}\nAddress: {}\nDistrict: {}\nNo of Worker: {}\nWorker: {}'.format(
-            instance.firstname,
-            instance.phno,
-            instance.email,
-            instance.address,
-            instance.district,
-            instance.amount,
-            instance.worker
-        )
-        send_mail(
-            'Your booking has been approved',
-            message,
-            settings.EMAIL_HOST_USER,
-            [instance.email],
-            fail_silently=False,
-        )
+        try:
+            message = 'Dear {},\n\nYour booking has been approved.\n\nDetails:\nPhone Number: {}\nEmail: {}\nAddress: {}\nDistrict: {}\nNo of Worker: {}\nWorker: {}'.format(
+                instance.firstname,
+                instance.phno,
+                instance.email,
+                instance.address,
+                instance.district,
+                instance.amount,
+                instance.worker
+            )
+            send_mail(
+                'Your booking has been approved',
+                message,
+                settings.EMAIL_HOST_USER,
+                [instance.email],
+                fail_silently=False,
+            )
+        except Exception as e:
+            # Log the exception or handle it as needed
+            print(f"Failed to send email: {e}")
+
     def __str__(self):
         return self.user
-        
+
+
+
+
 class feedback(models.Model):
     name=models.CharField(max_length=20)
     phone=models.CharField(max_length=200)
