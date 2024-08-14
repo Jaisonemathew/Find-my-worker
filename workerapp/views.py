@@ -9,8 +9,7 @@ from .models import booking
 from .models import feedback
 from .models import notification
 from .models import review
-from .form import userUpdate
-
+from .form import userUpdate,customerForm,customerAddForm,workerForm,workerAddForm
 
 
 # Create your views here.
@@ -204,3 +203,45 @@ def trustable(request):
 def creator(request):
    
     return render(request,"creator.html")
+
+def registerCustomer(request):
+    registered = False
+    if request.method == 'POST':
+        var_customerForm = customerForm(request.POST)
+        var_customerAddForm = customerAddForm(request.POST)
+        if var_customerForm.is_valid() and var_customerAddForm.is_valid():
+            customerprimary = var_customerForm.save()
+            customerprimary.set_password(customerprimary.password)
+            customerprimary.save()
+            customerAdd = var_customerAddForm.save(commit=False)
+            customerAdd.customer = customerprimary
+            customerAdd.save()
+            registered = True
+    else:
+        var_customerForm = customerForm()
+        var_customerAddForm = customerAddForm()
+    return render(request, 'registerCustomer.html', {'var_customerForm': var_customerForm, 'var_customerAddForm': var_customerAddForm, 'registered': registered})
+
+def registerWorker(request):
+    registered = False
+    if request.method == 'POST':
+        var_workerForm = workerForm(request.POST, request.FILES)
+        var_workerAddForm = workerAddForm(request.POST, request.FILES)
+        if var_workerForm.is_valid() and var_workerAddForm.is_valid():
+            workerprimary = var_workerForm.save()
+            workerprimary.set_password(workerprimary.password)
+            workerprimary.save()
+            workerAdd = var_workerAddForm.save(commit=False)
+            workerAdd.worker = workerprimary
+            if 'img' in request.FILES:
+                workerAdd.img = request.FILES['img']
+            workerAdd.save()
+            registered = True
+    else:
+        var_workerForm = workerForm()
+        var_workerAddForm = workerAddForm()
+    return render(request, 'registerWorker.html', {
+        'var_workerForm': var_workerForm,
+        'var_workerAddForm': var_workerAddForm,
+        'registered': registered
+    })

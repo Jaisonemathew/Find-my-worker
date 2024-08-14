@@ -5,10 +5,19 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.core.mail import send_mail
 from django.conf import settings
+from django.contrib.auth.models import User
+
+class Customer(models.Model):
+    customer=models.OneToOneField(User,on_delete=models.CASCADE)
+    is_customer=models.BooleanField(default=True)
+    name=models.CharField(max_length=250,null=True)
+
 
 class Worker(models.Model):
     name=models.CharField(max_length=250)
-    img=models.ImageField(upload_to="pics")
+    img=models.ImageField(upload_to="pics",blank=True,null=True)
+    worker=models.OneToOneField(User,on_delete=models.CASCADE,null=True)
+    is_customer=models.BooleanField(default=False)
     def __str__(self):
         return self.name
     

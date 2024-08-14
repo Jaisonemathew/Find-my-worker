@@ -25,6 +25,9 @@ urlpatterns = [
     path('award/',views.award, name="award"), 
     path('trustable/',views.trustable, name="trustable"), 
     path('creator/',views.creator, name="creator"), 
+    path('registerworker/', views.registerWorker, name='registerworker'),
+    path('registercustomer/', views.registerCustomer, name='registercustomer'),
+
    ]
 
 if settings.DEBUG:

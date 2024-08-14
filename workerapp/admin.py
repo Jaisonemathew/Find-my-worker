@@ -3,7 +3,7 @@ from .models import booking
 # Register your models here.
 
 from .models import Worker
-from .models import booking,feedback,notification,review
+from .models import booking,feedback,notification,review,Customer
 
 class BookingAdmin(admin.ModelAdmin):
     list_display = ('user', 'is_approved','is_cancelled')
@@ -22,3 +22,4 @@ admin.site.register(Worker)
 admin.site.register(feedback)
 admin.site.register(notification)
 admin.site.register(review)
+admin.site.register(Customer)

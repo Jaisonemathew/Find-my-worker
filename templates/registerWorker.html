@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class="jumbotron">
+   {% if registered %}
+        <h1>Thanks for registering, Please Log in!</h1>
+    {% else %}
+        <h1>Registration for Worker:</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ var_workerForm.as_p }}
+            {{ var_workerAddForm.as_p }}
+            <button type="submit">Register</button>
+        </form>
+    {% endif %}
+</div>
+</body>
+</html>
