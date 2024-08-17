@@ -38,23 +38,6 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
-def register(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password']
-        if User.objects.filter(username=username).exists():
-            messages.info(request,"Username Already Taken!")
-            return redirect('register')
-        elif User.objects.filter(email=email).exists():
-            messages.info(request,"Email Already Taken!")
-            return redirect('register')
-        else:
-            user=User.objects.create_user(username=username,email=email,password=password)
-            user.save()
-        return redirect('/')
-    return render(request,"register.html")
-
 def index(request):
    
     return render(request,"index.html")
@@ -76,7 +59,6 @@ def profile(request):
 
     return render(request,"profile.html")
    
-from .models import booking
 def details(request,worker):
     print(worker)
     if request.method == 'POST':

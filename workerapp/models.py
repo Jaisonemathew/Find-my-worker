@@ -10,17 +10,21 @@ from django.contrib.auth.models import User
 class Customer(models.Model):
     customer=models.OneToOneField(User,on_delete=models.CASCADE)
     is_customer=models.BooleanField(default=True)
-    name=models.CharField(max_length=250,null=True)
+    phone=models.CharField(max_length=10,null=True)
+    address=models.TextField(null=True)
     def __str__(self):
-        return self.name
+        return self.customer.username
 
 class Worker(models.Model):
-    name=models.CharField(max_length=250)
-    img=models.ImageField(upload_to="pics",blank=True,null=True)
     worker=models.OneToOneField(User,on_delete=models.CASCADE,null=True)
     is_customer=models.BooleanField(default=False)
+    salary=models.BigIntegerField(null=True)
+    worker_type=models.CharField(max_length=10,null=True)
+    name=models.CharField(max_length=250,null=True)
+    img=models.ImageField(upload_to="pics",blank=True,null=True)
+    
     def __str__(self):
-        return self.name
+        return self.worker.username
     
 class booking(models.Model):
     user=models.CharField(max_length=20)

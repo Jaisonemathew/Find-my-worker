@@ -17,15 +17,15 @@ class customerForm(forms.ModelForm):
 class customerAddForm(forms.ModelForm):
     class Meta():
         model=Customer
-        fields=['name']
+        fields=['phone','address']
 
 class workerForm(forms.ModelForm):
     password=forms.CharField(widget=forms.PasswordInput())
     class Meta():
         model=User
-        fields=['first_name','last_name','username','email','password']
+        fields=['username','email','password']
 
 class workerAddForm(forms.ModelForm):
     class Meta():
         model=Worker
-        fields=['name','img']
+        fields=['name','worker_type','salary','img']
