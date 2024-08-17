@@ -2,6 +2,10 @@ Admin:
 Username:admin
 Password:password
 
-User:
-Username:Jaison
+Customer:
+Username:jaison
+Password:password
+
+Worker:
+Username:sajin
 Password:password

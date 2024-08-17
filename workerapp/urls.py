@@ -27,6 +27,7 @@ urlpatterns = [
     path('creator/',views.creator, name="creator"), 
     path('registerworker/', views.registerWorker, name='registerworker'),
     path('registercustomer/', views.registerCustomer, name='registercustomer'),
+    path('worker_dashboard/', views.worker_dashboard, name='worker_dashboard'),
 
    ]
 

@@ -11,7 +11,8 @@ class Customer(models.Model):
     customer=models.OneToOneField(User,on_delete=models.CASCADE)
     is_customer=models.BooleanField(default=True)
     name=models.CharField(max_length=250,null=True)
-
+    def __str__(self):
+        return self.name
 
 class Worker(models.Model):
     name=models.CharField(max_length=250)

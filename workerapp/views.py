@@ -4,29 +4,35 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.shortcuts import render
-from .models import booking , Worker
-from .models import booking
-from .models import feedback
-from .models import notification
-from .models import review
+from .models import booking , Worker,Customer,feedback,notification,review
 from .form import userUpdate,customerForm,customerAddForm,workerForm,workerAddForm
 
 
 # Create your views here.
 def login(request):
-    if request.method=='POST':
+    if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        user=auth.authenticate(username=username,password=password)
+        user = auth.authenticate(username=username, password=password)
 
         if user is not None:
-            auth.login(request,user)
-            return redirect('index')
+            auth.login(request, user)
+            try:
+                if Customer.objects.filter(customer=user).exists():
+                    return redirect('index')
+                elif Worker.objects.filter(worker=user).exists():
+                    return redirect('worker_dashboard')
+                else:
+                    messages.info(request, "User type is not recognized.")
+                    return redirect('/')
+            except Exception as e:
+                messages.error(request, f"An error occurred: {str(e)}")
+                return redirect('/')
         else:
-            messages.info(request,"invalid login details!")
+            messages.info(request, "Invalid login details!")
             return redirect('/')
-        return render(request,"login.html")
-    return render(request,"login.html")
+    
+    return render(request, "login.html")
 
 def logout(request):
     auth.logout(request)
@@ -245,3 +251,6 @@ def registerWorker(request):
         'var_workerAddForm': var_workerAddForm,
         'registered': registered
     })
+
+def worker_dashboard(request):
+    return render(request,"workerdash.html")
