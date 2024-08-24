@@ -28,4 +28,4 @@ class workerForm(forms.ModelForm):
 class workerAddForm(forms.ModelForm):
     class Meta():
         model=Worker
-        fields=['name','worker_type','salary','img']
+        fields=['name','phone','worker_type','salary','img']
