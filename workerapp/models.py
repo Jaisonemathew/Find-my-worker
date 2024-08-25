@@ -19,7 +19,7 @@ class Worker(models.Model):
     worker=models.OneToOneField(User,on_delete=models.CASCADE,null=True)
     is_customer=models.BooleanField(default=False)
     salary=models.BigIntegerField(null=True)
-    worker_type=models.CharField(max_length=10,null=True)
+    worker_type=models.CharField(max_length=20,null=True)
     name=models.CharField(max_length=250,null=True)
     phone=models.CharField(max_length=10,null=True)
     img=models.ImageField(upload_to="pics",blank=True,null=True)
@@ -33,7 +33,6 @@ class booking(models.Model):
     worker_type=models.CharField(max_length=20,null=True)
     salary=models.BigIntegerField(null=True)
     phone=models.CharField(max_length=10,null=True)
-    email=models.CharField(max_length=200,null=True)
     cardnumber=models.CharField(max_length=16,null=True)
     month=models.CharField(max_length=2,null=True)
     year=models.CharField(max_length=4,null=True)
@@ -51,12 +50,11 @@ class booking(models.Model):
 def send_notification(sender, instance, created, **kwargs):
     if not created and instance.is_approved:
         try:
-            message = 'Dear {},\n\nYour booking has been approved.\n\nDetails:\nWorker: {}\nWorker Type: {}\nSalary: {}\nPhone Number: {}\nEmail: {}'.format(
+            message = 'Dear {},\n\nYour booking has been approved.\n\nDetails:\nWorker: {}\nWorker Type: {}\nSalary: {}\nPhone Number: {}\n'.format(
                 instance.worker,
                 instance.worker_type,
                 instance.salary,
                 instance.phone,
-                instance.email
             )
             send_mail(
                 'Your booking has been approved',

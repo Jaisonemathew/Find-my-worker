@@ -155,7 +155,7 @@
                         <h4>₹{{i.salary}}/day</h4>
                         <h4>{{i.worker_type}}</h4>
                         <div class="col-md-12">
-                           <a class="read_more" href="{% url 'details' i.name %}">Book now</a>
+                           <a class="read_more" href="{% url 'details' i.name i.salary i.worker_type i.phone %}">Book now</a>
                         </div>
                      </div>
                   </div>

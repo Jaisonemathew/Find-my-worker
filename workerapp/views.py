@@ -59,8 +59,10 @@ def profile(request):
 
     return render(request,"profile.html")
    
-def details(request, worker, worker_type=None, salary=None, name=None, phone=None, email=None):
-    print(worker)
+def details(request, worker, worker_type=None, salary=None, name=None, phone=None):
+    context = {
+        'worker':worker
+    }
     if request.method == 'POST':
         user = request.user
         cardnumber=request.POST['cardnumber']
@@ -71,14 +73,13 @@ def details(request, worker, worker_type=None, salary=None, name=None, phone=Non
         worker_type=worker_type
         salary=salary
         phone=phone
-        email=email
         messages.success(request, 'Booking successful waiting for confirmation.')
-        book=booking.objects.create(user=user.username,cardnumber=cardnumber,month=month,year=year,cvv=cvv,worker=worker,worker_type=worker_type,salary=salary,phone=phone,email=email)
+        book=booking.objects.create(user=user.username,cardnumber=cardnumber,month=month,year=year,cvv=cvv,worker=worker,worker_type=worker_type,salary=salary,phone=phone)
         book.save()
       
         return redirect('mybookings')
 
-    return render(request,"details.html",{'worker':worker})
+    return render(request,"details.html",context)
   
 def mybookings(request):
     user= request.user.username
