@@ -3,7 +3,6 @@ from django.contrib import messages, auth
 from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.shortcuts import render
 from .models import booking , Worker,Customer,feedback,notification,review
 from .form import userUpdate,customerForm,customerAddForm,workerForm,workerAddForm
 
@@ -238,4 +237,10 @@ def registerWorker(request):
     })
 
 def worker_dashboard(request):
-    return render(request,"workerdash.html")
+    user = request.user
+    full_name = f"{user.first_name} {user.last_name}"
+    book = booking.objects.filter(worker=full_name).all()
+    context = {
+        'userbooking': book
+    }
+    return render(request,"workerdash.html",context)
