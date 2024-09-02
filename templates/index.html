@@ -383,7 +383,7 @@
                            <input class="contactus" placeholder="Email" type="email" name="email" required> 
                         </div>
                         <div class="col-md-12">
-                           <textarea class="textarea" placeholder="Message" type="text" name="message" required>Message</textarea>
+                           <textarea class="contactus" rows="8" cols="50" placeholder="Message" type="text" name="message" required>Message</textarea>
                         </div>
                         <div class="col-md-12">
                            <button class="send_btn" type='submit'>Send</button>
@@ -419,75 +419,7 @@
          </div>
       </div>
       <!-- clients -->
-      <div class="clients">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="titlepage">
-                     <h2>Clients Words</h2>
-                     <span>Here is one of the client review</span>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col-md-8 offset-md-2">
-                  <div class="testimo_ban_bg">
-                     <div id="testimo" class="carousel slide testimo_ban" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                           <li data-target="#testimo" data-slide-to="0" class="active"></li>
-                           <li data-target="#testimo" data-slide-to="1"></li>
-                           <li data-target="#testimo" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                           <div class="carousel-item active">
-                              <div class="container parile0">
-                                 <div class="carousel-caption relative2">
-                                    <div class="row d_flex">
-                                       <div class="col-md-12">
-                                          <i><img class="qusright" src="{% static 'images/t.png' %}" alt="#"/><img src="{% static 'images/tes.png' %}" alt="#"/><img class="qusleft" src="{% static 'images/t.png' %}" alt="#"/></i>
-                                          <div class="consect">
-                                             <span>Misto John</span>
-                                             <p>I've booked a contract to renovate my house.Their service were so quick.their customer service is amazing</p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        <div style="background-color: #fe9901;
-                                       border: none;
-                                       color: white;
-                                       padding: 15px 32px;
-                                       text-align: center;
-                                       text-decoration: none;
-                                       display: inline-block;
-                                       font-size: 16px;
-                                       margin: 4px 2px;
-                                       margin-left:180px;
-                                       cursor: pointer;
-                                       width:50%;">
-                        <a href="{% url 'review' %}">Add reviews</a>
-                        </div>
-                        <div style="background-color: #fe9901;
-                                       border: none;
-                                       color: white;
-                                       padding: 15px 32px;
-                                       text-align: center;
-                                       text-decoration: none;
-                                       display: inline-block;
-                                       font-size: 16px;
-                                       margin: 4px 2px;
-                                       margin-left:180px;
-                                       cursor: pointer;
-                                       width:50%;">
-                        <a href="{% url 'seemore' %}">More reviews</a>
-                        </div>
-                      </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
+    
    </div>
       <!-- end clients -->
       <!--  footer -->
