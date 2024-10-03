@@ -144,23 +144,25 @@
                      <span>Here are more of our expert workers, you can browse and book them!</span>
                   </div>
                </div>
-             {% for  i in obj %}
-             <div class="col-md-3 col-sm-6 my-4">
-                  <div class="staff">
-                     <div class="man">
-                        <i><img src="{{i.img.url}}" alt="#"/></i>
-                     </div>
-                     <div class="social_icon_main">
-                        <h4>{{i.name}}</h4>
-                        <h4>₹{{i.salary}}/day</h4>
-                        <h4>{{i.worker_type}}</h4>
-                        <div class="col-md-12">
-                           <a class="read_more" href="{% url 'details' i.name i.salary i.worker_type i.phone %}">Book now</a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               {% endfor %}
+               {% for i in obj %}
+               {% if i.is_approved %}
+                   <div class="col-md-3 col-sm-6 my-4">
+                       <div class="staff">
+                           <div class="man">
+                               <i><img src="{{ i.img.url }}" alt="#"/></i>
+                           </div>
+                           <div class="social_icon_main">
+                               <h4>{{ i.name }}</h4>
+                               <h4>₹{{ i.salary }}/day</h4>
+                               <h4>{{ i.worker_type }}</h4>
+                               <div class="col-md-12">
+                                   <a class="read_more" href="{% url 'details' i.name i.salary i.worker_type i.phone %}">Book now</a>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               {% endif %}
+           {% endfor %}
          </div>
       </div>
       <!-- end staff -->

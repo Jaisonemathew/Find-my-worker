@@ -23,6 +23,7 @@ class Worker(models.Model):
     name=models.CharField(max_length=250,null=True)
     phone=models.CharField(max_length=10,null=True)
     img=models.ImageField(upload_to="pics",blank=True,null=True)
+    is_approved = models.BooleanField(default=False,null=True)
     
     def __str__(self):
         return self.worker.username

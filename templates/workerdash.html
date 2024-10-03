@@ -137,7 +137,11 @@
            </section>
         </header>
         <!-- end banner -->
-     
+          <div class="container">
+            <br><br>
+        <p>Welcome, {{ user.username }}!</p>
+        <p>Your account approval status: {% if is_approved %}Approved{% else %}Not Approved{% endif %}</p>
+      </div>
         <!-- mybookings banner -->
      
         <div class="container-fluid">
@@ -151,6 +155,7 @@
              {% endfor %}
          </ul>
      {% endif %}
+     {% if is_approved %}
            <div class="row mt-3">
               {% for i in userbooking %}
       
@@ -167,7 +172,7 @@
               
      
               {% endfor %}
-     
+              {% else %}No bookings to show because you are not yet an Approved user{% endif %}
            </div>
         </div>
         <!-- end mybookings -->

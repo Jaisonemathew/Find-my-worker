@@ -253,12 +253,15 @@ def registerWorker(request):
 def worker_dashboard(request):
     user = request.user
     try:
-        worker = Worker.objects.get(worker=user)
         book = booking.objects.filter(worker=worker.name).all()
+        worker = Worker.objects.get(worker=user)
+        is_approved = worker.is_approved
     except Worker.DoesNotExist:
         book = []
+        is_approved = False
     
     context = {
-        'userbooking': book
+        'userbooking': book,
+        'is_approved': is_approved
     }
     return render(request, "workerdash.html", context)
