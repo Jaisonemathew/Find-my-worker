@@ -8,6 +8,11 @@ class userUpdate(forms.ModelForm):
         model=User
         fields=['username','email']
 
+class userUpdateAdd(forms.ModelForm):
+    class Meta:
+        model=Customer
+        fields=['phone','address']
+
 class customerForm(forms.ModelForm):
     password=forms.CharField(widget=forms.PasswordInput())
     class Meta():
@@ -29,3 +34,4 @@ class workerAddForm(forms.ModelForm):
     class Meta():
         model=Worker
         fields=['name','phone','worker_type','salary','img']
+           

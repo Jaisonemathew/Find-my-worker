@@ -116,6 +116,20 @@ def fdback(request):
         f.save()
       
         return redirect("index")
+from django.shortcuts import render
+from .models import feedback
+
+def wfeedback(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        phone = request.POST['phone']
+        email = request.POST['email']
+        message = request.POST['message']
+        f = feedback.objects.create(name=name, phone=phone, email=email, message=message)
+        print(f)
+        f.save()
+        return render(request, "feedback.html", {'success_message': 'Feedback submitted successfully!'})
+    return render(request, "feedback.html")
 
 
 def construction(request):
@@ -238,9 +252,13 @@ def registerWorker(request):
 
 def worker_dashboard(request):
     user = request.user
-    full_name = f"{user.first_name} {user.last_name}"
-    book = booking.objects.filter(worker=full_name).all()
+    try:
+        worker = Worker.objects.get(worker=user)
+        book = booking.objects.filter(worker=worker.name).all()
+    except Worker.DoesNotExist:
+        book = []
+    
     context = {
         'userbooking': book
     }
-    return render(request,"workerdash.html",context)
+    return render(request, "workerdash.html", context)

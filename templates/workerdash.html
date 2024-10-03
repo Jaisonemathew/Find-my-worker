@@ -56,20 +56,25 @@
            <!-- header inner -->
            <div class="header">
               <div class="header_top">
-                 <div class="container">
-                    <div class="row">
-                       <div class="col-md-3">
-                          <ul class="contat_infoma text_align_right">
-                             <li><a href=""><i class="fa-solid fa-user" style="color: #ffffff;"></i>{{ user.username }}</a></li>
-                          </ul>
-                       </div>
-                       <div class="col-md-3">
-                          <ul class="contat_infoma">
-                             <li><a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket" style="color: #ffffff;"></i>Logout</a></li>
-                          </ul>
-                       </div>         
-                    </div>
-                 </div>
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-3">
+                        <ul class="contat_infoma text_align_right">
+                           <li><a href="{% url 'worker_dashboard' %}"><i class="fa-solid fa-user" style="color: #ffffff;"></i>{{ user.username }}</a></li>
+                        </ul>
+                     </div>
+                     <div class="col-md-3">
+                       <ul class="contat_infoma">
+                          <li><a href="{% url 'wfeedback' %}"><i class="fa-solid fa-comment-dots" style="color: #ffffff;"></i>Feedback</a></li>
+                       </ul>
+                    </div>  
+                     <div class="col-md-3">
+                        <ul class="contat_infoma">
+                           <li><a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket" style="color: #ffffff;"></i>Logout</a></li>
+                        </ul>
+                     </div>         
+                  </div>
+               </div>
               </div>
               <div class="container">
                  <div class="row">
