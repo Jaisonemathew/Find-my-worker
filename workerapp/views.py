@@ -60,25 +60,24 @@ def profile(request):
    
 def details(request, worker, worker_type=None, salary=None, name=None, phone=None):
     context = {
-        'worker':worker
+        'worker': worker
     }
     if request.method == 'POST':
         user = request.user
-        cardnumber=request.POST['cardnumber']
-        month=request.POST['month']
-        year=request.POST['year']
-        cvv=request.POST['cvv']
-        worker=worker
-        worker_type=worker_type
-        salary=salary
-        phone=phone
+        cardnumber = request.POST['cardnumber']
+        month = request.POST['month']
+        year = request.POST['year']
+        cvv = request.POST['cvv']
+        
+        salary = salary
+        phone = phone
         messages.success(request, 'Booking successful waiting for confirmation.')
-        book=booking.objects.create(user=user.username,cardnumber=cardnumber,month=month,year=year,cvv=cvv,worker=worker,worker_type=worker_type,salary=salary,phone=phone)
+        book = booking.objects.create(user=user.username, cardnumber=cardnumber, month=month, year=year, cvv=cvv, worker=worker, worker_type=worker_type, salary=salary, phone=phone)
         book.save()
       
         return redirect('mybookings')
 
-    return render(request,"details.html",context)
+    return render(request, "details.html", context)
   
 def mybookings(request):
     user= request.user.username
@@ -252,9 +251,10 @@ def registerWorker(request):
 
 def worker_dashboard(request):
     user = request.user
+    worker = None
     try:
-        book = booking.objects.filter(worker=worker.name).all()
         worker = Worker.objects.get(worker=user)
+        book = booking.objects.filter(worker=worker.name).all()
         is_approved = worker.is_approved
     except Worker.DoesNotExist:
         book = []
