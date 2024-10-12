@@ -149,7 +149,12 @@
             <form method="post">
             {% csrf_token %}
               <h2 class="form-section-heading">Card Details</h2>
-
+              <div class="field-wrap">
+               <div class="field">
+                   <label class="label" for="booking_date">Booking Date</label>
+                   <input class="input" id="booking_date" name="booking_date" type="date" required>
+               </div>
+           </div>
               <div class="field-wrap">
                <div class="field">
                  <label class="label" for="cardnumber">Card Number</label>

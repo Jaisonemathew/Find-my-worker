@@ -64,15 +64,15 @@ def details(request, worker, worker_type=None, salary=None, name=None, phone=Non
     }
     if request.method == 'POST':
         user = request.user
+        date=request.POST['booking_date']
         cardnumber = request.POST['cardnumber']
         month = request.POST['month']
         year = request.POST['year']
         cvv = request.POST['cvv']
-        
         salary = salary
         phone = phone
-        messages.success(request, 'Booking successful waiting for confirmation.')
-        book = booking.objects.create(user=user.username, cardnumber=cardnumber, month=month, year=year, cvv=cvv, worker=worker, worker_type=worker_type, salary=salary, phone=phone)
+        messages.success(request, 'Booking successfull.')
+        book = booking.objects.create(user=user.username, booking_date=date, cardnumber=cardnumber, month=month, year=year, cvv=cvv, worker=worker, worker_type=worker_type, salary=salary, phone=phone)
         book.save()
       
         return redirect('mybookings')

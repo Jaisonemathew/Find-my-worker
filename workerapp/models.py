@@ -40,6 +40,7 @@ class booking(models.Model):
     cvv=models.CharField(max_length=3,null=True)
     is_approved = models.BooleanField(default=False)
     is_cancelled = models.BooleanField(default=False)
+    booking_date = models.DateField(null=True, blank=True)
     def save(self, *args, **kwargs):
         if self.is_approved and self.is_cancelled:
             raise ValidationError("A booking cannot be both approved and cancelled.")
