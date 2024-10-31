@@ -1,4 +1,4 @@
-# Life and Limb 
+# Find my worker online
 This online portal helps individuals and businesses with easy access to verified, skilled workers and a user-friendly interface.
 
 # Screenshots
