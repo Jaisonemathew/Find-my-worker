@@ -2,9 +2,9 @@
 This online portal helps individuals and businesses with easy access to verified, skilled workers and a user-friendly interface.
 
 # Screenshots
-![Screenshot](/Screenshots/1.png?raw=true "Screenshot")
-![Screenshot](/Screenshots/2.png?raw=true "Screenshot")
-![Screenshot](/Screenshots/3.png?raw=true "Screenshot")
+![Screenshot](/Screenshot/1.png?raw=true "Screenshot")
+![Screenshot](/Screenshot/2.png?raw=true "Screenshot")
+![Screenshot](/Screenshot/3.png?raw=true "Screenshot")
 
 # How to run 
 Required Libraries to run this project
